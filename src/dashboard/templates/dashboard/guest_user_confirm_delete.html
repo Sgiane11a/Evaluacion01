@@ -1,0 +1,84 @@
+{% extends "base_crud.html" %}
+
+{% block content %}
+<style>
+    /* Fondo y estilo general */
+    body {
+        background-color: #f4f4f9; /* Fondo claro para toda la página */
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        padding: 50px 0;
+    }
+
+    .crud-title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 30px;
+    }
+
+    .crud-form {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .crud-form p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    .crud-button {
+        background-color: #f02a80; /* Rojo claro para llamar la atención */
+        color: white;
+        padding: 12px 25px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .crud-button:hover {
+        background-color: #f02a80; /* Rojo más oscuro cuando se pasa el mouse */
+    }
+
+    .crud-link {
+        text-decoration: none;
+        color: #f02a80;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    .crud-link:hover {
+        color: #f02a80; /* Azul más oscuro al pasar el ratón */
+    }
+
+    .cancel-container {
+        margin-top: 20px;
+    }
+</style>
+
+<div class="crud-form">
+    <h1 class="crud-title">Eliminar Usuario</h1>
+    <p>¿Estás seguro de que deseas eliminar a <strong>{{ user.name }}</strong>?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="crud-button">Confirmar Eliminación</button>
+    </form>
+
+    <div class="cancel-container">
+        <a href="{% url 'guest_user_detail' user_id=user.id %}" class="crud-link">Cancelar</a>
+    </div>
+</div>
+
+{% endblock content %}

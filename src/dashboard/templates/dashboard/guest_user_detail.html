@@ -1,0 +1,102 @@
+{% extends "base_crud.html" %}
+
+{% block content %}
+<style>
+  
+  /* Fondo y estilo base */
+  body {
+    background-color: #f02a80;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+
+  /* Contenedor central sin efectos exagerados */
+  .detail-container {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 30px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+  }
+
+  /* Título del detalle */
+  .detail-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #222;
+    text-align: left;
+  }
+
+  /* Información del detalle */
+  .detail-info {
+    font-size: 16px;
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+
+  /* Botones de acción con diseño plano y discreto */
+  .action-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .action-button {
+    padding: 10px 20px;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+
+  .action-button:focus {
+    outline: none;
+  }
+
+  /* Estilos personalizados para cada botón */
+  .action-button.edit {
+    background-color: transparent;
+    color: #f02a80;
+    border-color: #f02a80;
+  }
+
+  .action-button.edit:hover {
+    background-color: #eaf3ff;
+  }
+
+  .action-button.delete {
+    background-color: transparent;
+    color: #f02a80;
+    border-color: #f02a80;
+  }
+
+  .action-button.delete:hover {
+    background-color: #fdecea;
+  }
+
+  .action-button.back {
+    background-color: transparent;
+    color: #555;
+    border-color: #555;
+  }
+
+  .action-button.back:hover {
+    background-color: #eee;
+  }
+</style>
+
+<div class="detail-container">
+  <h1>{{ user.name }}</h1>
+  <p class="detail-info"><strong>Email:</strong> {{ user.email }}</p>
+  <div class="action-buttons">
+    <a href="{% url 'guest_user_update' user_id=user.id %}" class="action-button edit">Editar</a>
+    <a href="{% url 'guest_user_delete' user_id=user.id %}" class="action-button delete">Eliminar</a>
+    <a href="{% url 'guest_user_list' %}" class="action-button back">Volver a la lista</a>
+  </div>
+</div>
+{% endblock content %}

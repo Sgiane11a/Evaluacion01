@@ -1,0 +1,147 @@
+{% extends "base_crud.html" %}
+
+{% block content %}
+<style>
+  /* Estilo general para el cuerpo */
+  body {
+    background-color: #f02a80;
+    font-family: 'Nunito', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 20px 0;
+  }
+
+  /* Título principal */
+  .crud-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Contenedor de la tabla */
+  .table-container {
+    max-width: 1000px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 40px;
+  }
+
+  /* Botón para crear un nuevo usuario */
+  .crud-create {
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #f02a80;
+    background-color: #fff;
+    padding: 12px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+  }
+
+  .crud-create:hover {
+    background-color: #f02a80;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  /* Estilo de la tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 15px;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  th {
+    background-color: #f02a80;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #d44b76; /* Para resaltar la separación */
+  }
+
+  td {
+    background-color: #fafafa;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+
+  /* Estilo de los enlaces de las acciones */
+  .crud-link {
+    color: #f02a80;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+    padding: 6px 16px;
+    border-radius: 8px;
+    border: 2px solid #f02a80;
+    font-size: 14px;
+  }
+
+  .crud-link:hover {
+    background-color: #f02a80;
+    color: white;
+    transform: scale(1.05);
+  }
+
+  .action-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+</style>
+
+<section class="guest-user-list">
+  <h1 class="crud-title">Lista de Usuarios Invitados</h1>
+  <a href="{% url 'guest_user_create' %}" class="crud-create">Crear Nuevo Usuario</a>
+
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td class="action-links">
+              <a href="{% url 'guest_user_update' user_id=user.id %}" class="crud-link">Editar</a>
+              <a href="{% url 'guest_user_delete' user_id=user.id %}" class="crud-link">Eliminar</a>
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="3" class="text-center">No hay usuarios.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+
+{% endblock %}

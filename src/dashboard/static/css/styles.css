@@ -1,0 +1,115 @@
+/* Dashboard CRUD Styles */
+form {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #333;
+}
+
+form h1, form h2, form h3 {
+    color: #fad20a;
+    margin-bottom: 1rem;
+}
+
+form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #f02a80;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    background: #ec3898;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #f02a80;
+}
+
+a {
+    color: #fad20a;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #f02a80;
+}
+
+
+/* CRUD Custom Classes */
+.crud-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.crud-form {
+    /* Se utiliza la estilización existente para form */
+}
+
+.crud-label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f02a80;
+    margin-bottom: 0.5rem;
+}
+
+.crud-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.crud-button {
+    background: #ec3898;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.crud-button:hover {
+    background: #f02a80;
+}
+
+.crud-link {
+    color: #fad20a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.crud-link:hover {
+    color: #f02a80;
+}
+
+.crud-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
