@@ -1,7 +1,7 @@
 FROM python:3.11
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app
-RUN 
+RUN apt-get update && apt-get install -y sqlite3 libsqlite3-dev
 RUN pip install django
 RUN pip install requests
 COPY . /app/
