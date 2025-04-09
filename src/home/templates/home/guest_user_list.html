@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="guest-user-list">
+        <h1>
+            We'll let you know when the event starts.
+        </h1>
+
+        <h1>
+            These are the guests.
+        </h1>
+
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+            </tr>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}
+    

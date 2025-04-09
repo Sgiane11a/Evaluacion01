@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="welcome">
+        <img class="logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiS_c9RlZ8NvlwyNabWV5hERyZJBBCP44no0TRKtD0EFiwEPuyDVdYnK6SQGhpLgvYfpDQWM5JykpxX2IJdn9B9K0uECe7qwO_HP0PVQkJA1EKGtkUCRLwtzwOhaYnlklrMWLQE8bfHWhc/s1600/logo-mistura-2011-jpeg.png" alt="Mistura">
+
+        <h1 class="title">Join Lima's new gastronomic fair!</h1>
+        <form class="subscribe" method="post" action="{% url 'invitation' %}">
+            {% csrf_token %}
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" value="{{ user.name|default_if_none:'' }}">
+            </div>
+            <br>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" value="{{ user.email|default_if_none:'' }}">
+            </div>
+            <br>
+            <button type="submit">Notify Me
+            </button>
+        </form>
+    </section>
+
+    <section class="menu" aria-labelledby="menu-title">
+        <div class="cards">
+          {% for item in data %}
+            <article class="card" role="region" aria-labelledby="dish-{{ forloop.counter }}-name">
+              <picture>
+                <img
+                  src="{{ item.imageUrl }}"
+                  alt="Foto de {{ item.name }}"
+                  loading="lazy"
+                  width="300"
+                  height="200"
+                />
+              </picture>
+    
+              <div class="card-content">
+                <h3 id="dish-{{ forloop.counter }}-name">{{ item.name }}</h3>
+                <p class="category">{{ item.category }}</p>
+                <p class="description">{{ item.description }}</p>
+                <ul class="ingredients" aria-label="Ingredientes">
+                  {% for ingrediente in item.ingredients %}
+                    <li>{{ ingrediente }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      </section>
+{% endblock %}

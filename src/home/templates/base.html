@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Lima's new gastronomic fair!</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header class="navbar" role="banner" aria-label="Main navigation">
+      <div class="container">
+        <a href="{% url 'welcome' %}" class="brand">Mistura</a>
+        <nav id="nav-menu" class="nav-menu" role="navigation">
+          <ul>
+            <li><a href="{% url 'welcome' %}">Home</a></li>
+            <li><a href="{% url 'guest-user-list' %}">List</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main role="main">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-widgets">
+          <section class="widget">
+            <h4>Contact</h4>
+            <address>
+              Av. Perú 123, Lima, Perú<br>
+              <a href="mailto:info@mistura.pe">info@mistura.pe</a><br>
+              +51 123 456 789
+            </address>
+          </section>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; {{ now|date:"Y" }} Mistura. || Gianella</p>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>
